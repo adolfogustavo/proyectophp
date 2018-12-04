@@ -13,15 +13,12 @@
 						<label for="nick">Nick: </label>
 					</div>
 
-					<div class="validacion">
+					<div class="validacion"></div>
 						<input type="password" name="pass1" title="CONTRASEÑA CON NUMEROS, LETRAS, MAYUSCULAS Y MINUSCULAS ENTRE 8 Y 15 CARACTERES" pattern="[A-Za-z0-9]{8,15}" id="pass1" required>
 						<label for="pass1">Contraseña: </label>
-					</div>
 
-					<div class="validacion">
 						<input type="password" title="CONTRASEÑA CON NUMEROS, LETRAS, MAYUSCULAS Y MINUSCULAS ENTRE 8 Y 15 CARACTERES" pattern="[A-Za-z0-9]{8,15}" id="pass2" required>
 						<label for="pass2">Confirmar contraseña: </label>
-					</div>
 
 					<select name="nivel" required>
 						<option value="" disabled selected>ELIGE UN NIVEL DE USUARIO</option>

@@ -2,6 +2,7 @@
 	include '../conexion/conexion.php';
 
 	// Evitar que en nuestras consultas tengamos problemas de SQL Inyection
+	# Recordando que este nick fue enviado por AJAX
 	$nick = $con->real_escape_string($_POST['nick']);
 
 	$sel = $con->query("SELECT id FROM usuario WHERE nick = '$nick' ");
@@ -12,8 +13,9 @@
 	} else{
 		echo "<label style='color:green;'>El nombre de usuario está disponible</label>"; 
 	}
-	// No olvidar cerrar la conexion para minimizar recursos
+	
 	$con->close();
 
+	// No olvidar cerrar la conexion para minimizar recursos
 
 ?>

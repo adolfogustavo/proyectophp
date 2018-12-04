@@ -12,6 +12,7 @@
 		});
 	});
 
+
 	$('#btn_guardar').hide();
 
 	$('#pass2').change(function(event){
