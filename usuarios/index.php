@@ -49,6 +49,8 @@
 						</div>
 					</div>
 
+					<button type="submit" name="button" class="btn black" id="btn_guardar">Guardar <i class="material-icons">send</i></button>
+
 				</form>
 			</div>
 		</div>
@@ -59,21 +61,7 @@
  include '../extend/scripts.php';
 ?>
 
-<script>
-// Metodo AJAX 
-	$('#nick').change(function() {
-		$.post('ajax_validacion_nick.php',{
-			nick:$('#nick').val(),
-
-			beforeSend: function(){
-				$('.validacion').html("Espere un momento por favor..");
-			}
-
-		}, function(respuesta){
-		  $('.validacion').html(respuesta);
-		});
-	});
-</script>
+<script src="../js/validacion.js"></script>
 
 </body>
 </html>
