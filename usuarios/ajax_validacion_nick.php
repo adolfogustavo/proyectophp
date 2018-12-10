@@ -13,6 +13,7 @@
 	} else{
 		echo "<label style='color:green;'>El nombre de usuario está disponible</label>"; 
 	}
+
 	
 	$con->close();
 

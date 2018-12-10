@@ -1,14 +1,14 @@
 <?php 
-include '.../conexion/conexion.php';
+include '../conexion/conexion.php';
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$nick = $con->real_escape_string(htmlentities($_POST['nick']));
-	$pass1 = $con->real_escape_string(htmlentities($_POST['pass1']));
+	$pass = $con->real_escape_string(htmlentities($_POST['pass1']));
 	//$pass1 = sha1($pass1);
 	$nivel = $con->real_escape_string(htmlentities($_POST['nivel']));
 	$nombre = $con->real_escape_string(htmlentities($_POST['nombre']));
 	$correo = $con->real_escape_string($_POST['correo']);
-	if (empty($nick) || empty($pass1) || empty($nivel) || empty($nombre)) {
+	if (empty($nick) || empty($pass) || empty($nivel) || empty($nombre)) {
 		header('location:../extend/alerta.php?msj=Hay un campo sin especificar&c=us&p=in&t=error');
 		exit;
 	}
@@ -37,13 +37,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$usuario = strlen($nick);
 	$contra = strlen($pass);
 
-	if($usuario < 8 || $usuario > 15){
-		header('location:../extend/alerta.php?msj=El nick debe contener entre 8 y 15 caracteres&c=us&p=in&t=error');
+	if($usuario < 4 || $usuario > 15){
+		header('location:../extend/alerta.php?msj=El nick debe contener entre 4 y 15 caracteres&c=us&p=in&t=error');
 		exit;
 	}
 
-	if($contra < 8 || $contra > 15){
-		header('location:../extend/alerta.php?msj=La contraseña debe contener entre 8 y 15 caracteres&c=us&p=in&t=error');
+	if($contra < 4 || $contra > 15){
+		header('location:../extend/alerta.php?msj=La contrasena debe contener entre 4 y 15 caracteres&c=us&p=in&t=error');
 		exit;
 	}
 
@@ -62,10 +62,29 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 	if($archivo != '') {
 		$extension = $info['extension'];
+		if ($extension == 'png' || $entension == 'PNG' || $extension == 'jpg' || $extension == 'JPG') {
+			move_uploaded_file($archivo,'foto_perfil/'.$nick.'.'.$extension);
+			// guardando el archivo 
+			$ruta = $ruta."/".$nick.'.'.$extension;
+		} else {
+			header('location:../extend/alerta.php?msj=El formato no es valido&c=us&p=in&t=error');
+			exit;
+		}
 	} else {
 		$ruta = "foto_perfil/perfil.jpg";
 	}
 
+
+$pass = sha1($pass);
+$ins = $con->query("INSERT INTO usuario VALUES('','$nick','$pass','$nombre','$correo','$nivel',1,'$ruta') ");
+if($ins) {
+	header('location:../extend/alerta.php?msj=El usuario ha sido registrado&c=us&p=in&t=success');
+} else {
+	header('location:../extend/alerta.php?msj=El usuario no pudo ser registrado&c=us&p=in&t=error');
+	exit;
+}
+
+$con->close();
 
 } else {
 	header('location:../extend/alerta.php?msj=Utiliza el formulario&c=us&p=in&t=error');

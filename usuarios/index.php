@@ -7,17 +7,19 @@
 		<div class="card">
 			<div class="card-content">
 				<span class="card-title">Alta de usuarios</span>
-				<form action="form" action="ins_usuarios.php" method="post" enctype="multipart/form-data">
+				<form action="ins_usuarios.php" method="post" enctype="multipart/form-data">
 					<div class="input-field">
-						<input type="text" name="nick" required autofocus title="DEBE DE CONTENER ENTRE 8 Y 15 CARACTERES, SOLO LETRAS" pattern="[A-Za-z]{8,15}" id="nick" onblur="may(this.value, this.id)">
+						<input type="text" name="nick" required autofocus title="DEBE DE CONTENER ENTRE 8 Y 15 CARACTERES, SOLO LETRAS" pattern="[A-Za-z]{4,15}" id="nick" onblur="may(this.value, this.id)">
 						<label for="nick">Nick: </label>
 					</div>
 
 					<div class="validacion"></div>
-						<input type="password" name="pass1" title="CONTRASEÑA CON NUMEROS, LETRAS, MAYUSCULAS Y MINUSCULAS ENTRE 8 Y 15 CARACTERES" pattern="[A-Za-z0-9]{8,15}" id="pass1" required>
+						<input type="password" name="pass1" title="CONTRASEÑA CON NUMEROS, LETRAS, MAYUSCULAS Y MINUSCULAS ENTRE 8 Y 15 CARACTERES" id="pass1" required>
 						<label for="pass1">Contraseña: </label>
 
-						<input type="password" title="CONTRASEÑA CON NUMEROS, LETRAS, MAYUSCULAS Y MINUSCULAS ENTRE 8 Y 15 CARACTERES" pattern="[A-Za-z0-9]{8,15}" id="pass2" required>
+						<!-- pattern="[A-Za-z0-9]{4,15}" -->
+
+						<input type="password" title="CONTRASEÑA CON NUMEROS, LETRAS, MAYUSCULAS Y MINUSCULAS ENTRE 8 Y 15 CARACTERES" id="pass2" required>
 						<label for="pass2">Confirmar contraseña: </label>
 
 					<select name="nivel" required>
@@ -27,7 +29,7 @@
 					</select>
 
 					<div class="input-field">
-						<input type="text" name="nombre" title="Nombre del usuario" pattern="" id="nombre" onblur="may(this.value, this.add)" required pattern="[A-Z/s]+">
+						<input type="text" name="nombre" title="Nombre del usuario" id="nombre" onblur="may(this.value, this.id)" required pattern="[A-Z/s]+">
 						<label for="nombre">Nombre completo del usuario:</label>
 					</div>
 
