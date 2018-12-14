@@ -1,14 +1,14 @@
 <?php
 /* Set Variables */
-/*$host="localhost";
-$db="inmobiliaria"; 
-$username="root";
-$pass="root";*/
-
 $host="localhost";
 $db="inmobiliaria"; 
 $username="root";
-$pass="";
+$pass="root";
+
+/*$host="localhost";
+$db="inmobiliaria"; 
+$username="root";
+$pass="";*/
 
 /* Attempt to connect */
 $con = new mysqli($host,$username,$pass,$db);

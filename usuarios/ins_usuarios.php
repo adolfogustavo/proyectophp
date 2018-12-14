@@ -76,7 +76,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 
 $pass = sha1($pass);
-$ins = $con->query("INSERT INTO usuario VALUES('','$nick','$pass','$nombre','$correo','$nivel',1,'$ruta') ");
+print_r($pass);
+$ins = $con->query("INSERT INTO usuario (id,nick,pass,nombre,correo,nivel,bloqueo,foto) VALUES(NULL,'$nick','$pass','$nombre','$correo','$nivel',1,'$ruta') ");
 if($ins) {
 	header('location:../extend/alerta.php?msj=El usuario ha sido registrado&c=us&p=in&t=success');
 } else {
